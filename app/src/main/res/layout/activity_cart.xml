@@ -48,6 +48,12 @@
             android:layout_marginRight="16dp"
             android:layout_weight="1"
             />
+        <Button
+            android:id="@+id/checkout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/checkOut"
+            android:layout_gravity="center"/>
 
 
     </LinearLayout>

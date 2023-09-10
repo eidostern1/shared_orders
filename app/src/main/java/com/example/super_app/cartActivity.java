@@ -7,11 +7,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.SearchView;
 
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +42,8 @@ public class cartActivity extends AppCompatActivity implements DeleteOrderInterf
     private List<Product> products = new ArrayList<>();
     private CartProductAdapter cardProductAdapter;
 
+    private Button checkout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +51,7 @@ public class cartActivity extends AppCompatActivity implements DeleteOrderInterf
         setContentView(R.layout.activity_cart);
         searchView = findViewById(R.id.searchView);
         recyclerView = findViewById(R.id.recyclerView);
+        checkout = findViewById(R.id.checkout);
 
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
@@ -72,6 +78,13 @@ public class cartActivity extends AppCompatActivity implements DeleteOrderInterf
                     recyclerView.setAdapter(cardProductAdapter);
                 }
 
+            }
+        });
+        checkout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), PaymentActivity.class);
+                startActivity(i);
             }
         });
 
